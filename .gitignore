@@ -57,6 +57,10 @@ coverage.xml
 artifacts/releases/*.zip
 *.log
 
+# Unreleased challenge datasets (kept out of public git tree)
+data/adversarial-v2/cases.jsonl
+data/adversarial-v3/
+
 # Frontend
 web/node_modules/
 web/dist/

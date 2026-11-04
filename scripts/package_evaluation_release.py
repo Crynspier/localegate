@@ -4,8 +4,8 @@ Bundles public benchmark datasets, prompts, manifests, evaluation runs, analysis
 and reproducibility documentation into a clean, audited, distributable ZIP archive.
 
 Safety & Provenance Protections (Reviewer Directive):
-1. Held-Out Protection: data/adversarial-v2 cases.jsonl is strictly excluded by default
-   to prevent contaminating the sealed challenge benchmark.
+1. Benchmark Hygiene: data/adversarial-v2 cases.jsonl is un-tracked from git and excluded by default
+   from release archives to prevent training corpus contamination; future held-out evaluations use adversarial-v3.
 2. Content Audit: verifies zero local user paths (C:\\Users), zero secrets (.env), zero
    temporary SQLite databases, zero model binary weights (*.gguf), and zero cache files.
 3. Cryptographic Provenance: records Git commit SHA, working tree cleanliness, Python
@@ -274,14 +274,20 @@ def create_evaluation_package(
             "frontend_lockfile_sha256": _compute_sha256(pkg_lock) if pkg_lock.exists() else None,
         },
         "dataset_disclosure_policy": {
-            "public_datasets": ["data/benchmark-v1 (600 cases)", "data/adversarial-v1 (60 cases)"],
-            "sealed_challenge_dataset": "data/adversarial-v2 (30 cases)",
-            "sealed_dataset_cases_included": include_sealed,
+            "public_datasets": [
+                "data/benchmark-v1 (600 cases)",
+                "data/adversarial-v1 (60 cases)",
+                "data/adversarial-v2 (30 cases, publicly disclosed challenge dataset)",
+            ],
+            "disclosed_challenge_dataset": "data/adversarial-v2 (30 cases)",
+            "future_sealed_benchmark": "adversarial-v3 (unreleased external challenge suite)",
+            "cases_included_in_bundle": include_sealed,
             "status_note": (
-                "Full sealed benchmark cases are omitted by default to prevent evaluation data leakage into "
-                "subsequent model training or prompt iteration. Only documentation and verification manifests are included."
+                "adversarial-v2 was reclassified from sealed to publicly disclosed following repository exposure. "
+                "Its cases.jsonl is un-tracked from git and omitted by default from minimal evaluation bundles to keep distribution lightweight. "
+                "Future held-out evaluations will be conducted on an independently held adversarial-v3 benchmark suite."
                 if not include_sealed
-                else "WARNING: Sealed evaluation cases were explicitly included; adversarial-v2 must no longer be considered held-out."
+                else "adversarial-v2 cases.jsonl was explicitly included in this bundle."
             ),
         },
         "files_count": len(file_manifest_entries),

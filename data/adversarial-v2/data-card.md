@@ -40,3 +40,11 @@
 
 - **Split Isolation:** 0 paraphrase groups overlap between dev and test.
 - **Oracle Pipeline Validation:** 30/30 (100%) gold proposals yield exact expected decisions, reason codes, and canonical arguments when evaluated through `ParserOraclePipeline`.
+
+## 4. Benchmark Disclosure & Secrecy Reclassification
+
+- **Initial Design:** `adversarial-v2` was originally designed as a held-out challenge benchmark for evaluating post-v1 model robustness.
+- **Disclosure Status:** Following public repository disclosure in early commits, `adversarial-v2` is formally reclassified as a **publicly disclosed evaluation and regression challenge suite**. It is no longer represented as an unexposed sealed benchmark in research reporting.
+- **Working Tree Policy:** To avoid contaminating downstream training corpora or evaluation setups, `cases.jsonl` is un-tracked from the public repository working tree and excluded from minimal release archives.
+- **Future Challenge Benchmark:** Subsequent sealed/held-out model evaluations will be conducted against an independently maintained `adversarial-v3` benchmark suite hosted outside public repositories.
+

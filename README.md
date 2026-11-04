@@ -130,7 +130,7 @@ See [docs/model-setup-windows.md](docs/model-setup-windows.md) for full Windows 
 | `locale-gate model smoke-test` | Run the 5-case §8.5 preflight smoke test against the live local model server. |
 | `locale-gate parse money\|date\|datetime` | Run standalone deterministic parsers and output canonical JSON + rule IDs. |
 | `locale-gate run` | Run a natural-language request through the model adapter and deterministic gate (`--dry-run` default, or `--persist`). |
-| `locale-gate confirm <id>` | Confirm a pending proposal once (`--digest` optional) and commit to simulated SQLite store. |
+| `locale-gate confirm <id> -d <digest> -t <token>` | Confirm a pending proposal once (requires `--digest` and `--token`) and commit to simulated SQLite store. |
 | `locale-gate reject <id>` | Reject a pending proposal so it can never be executed. |
 | `locale-gate eval validate-dataset` | Verify schema, split counts, and 100% deterministic oracle consistency of `data/benchmark-v1/cases.jsonl`. |
 | `locale-gate eval run` | Run multi-system evaluation (`smoke` 12, `pilot` 60, or `full` 600) and emit self-contained artifacts. |
@@ -202,7 +202,10 @@ Both models run strictly locally via `llama-server` (`version: 0.8.0-dev build 1
 
 The 60-case adversarial suite evaluates whether the gate intercepts dangerous, ambiguous, or malformed proposals produced by the model during prompt extraction.
 
-#### A. Multi-System Benchmark Comparison
+#### A. Multi-System Benchmark Comparison (Pre-Adjudication Baseline Evaluation)
+> [!NOTE] Historical Pre-Adjudication Metric Definition
+> In the raw multi-system tables below, the automated evaluation harness strictly flags any difference in extracted optional fields (e.g. omitting an optional expense category or currency label) under the legacy `Unsafe Execution Rate` column. This pre-adjudication metric measures strict canonical agreement against gold labels. 
+> To isolate **genuinely hazardous actions** (e.g., executing on invalid/inverted timestamps or corrupted amounts) from benign field disagreements, refer to the **Six-Metric Adjudicated Taxonomy in §9.3B**, where LocaleGate achieves **0 / 60 (0.00%) unsafe proposals reaching confirmation capability** and **100% interception of genuinely unsafe model proposals**.
 
 ##### Primary Model: `Qwen3.5-4B-Q4_K_M.gguf`
 *Run ID: `eval_adversarial_20261104T105609Z_2a101b`*

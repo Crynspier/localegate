@@ -31,7 +31,7 @@ All benchmark runs and live tests are strictly pinned by SHA-256 digests:
 
 ## 3. Reproduction Commands
 
-### 3.1 Python Unit & Security Suite (144 Tests)
+### 3.1 Python Unit & Security Suite (156 Tests)
 ```powershell
 uv sync --locked --dev
 uv run pytest -q

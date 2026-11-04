@@ -15,7 +15,7 @@ Small open-weight language models (3B–4B parameters) running locally on commod
 
 We introduce **LocaleGate**, a deterministic verification and fail-closed execution gate designed to safely mediate tool-calling proposals from untrusted local small models. Rather than relying on recursive chain-of-thought prompting or fine-tuning, LocaleGate decouples probabilistic entity extraction from authoritative parsing, temporal role binding, and state commitment. Models are required to emit verbatim character-slice evidence quotes alongside proposals. Deterministic validators verify substring presence, validate grammatical and numeric grouping rules (e.g. Croatian comma decimals vs. US period decimals), apply closest-governing-cue role resolution, and enforce capability-token-based confirmation with replay protection. 
 
-Across 600 benchmark cases and 90 adversarial challenge scenarios, LocaleGate eliminates 100% of observed unsafe model proposals while preserving full cross-model reproducibility and sub-millisecond gate execution latency.
+Across 60 live adversarial evaluation cases on adversarial-v1, a 600-case deterministic parser oracle diagnostic on benchmark-v1, and 30 adversarial-v2 challenge scenarios, LocaleGate eliminates 100% of observed unsafe model proposals while preserving full cross-model reproducibility and 1.2 ms p50 / 2.1 ms p95 gate validation latency.
 
 ---
 
@@ -95,12 +95,16 @@ We benchmarked two small local open-weight models executed strictly via CPU infe
 | **Qwen3.5-4B-Q4_K_M.gguf** | 4.0B | Q4_K_M | `00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4` |
 | **gemma-4-E2B-it-Q4_K_M.gguf**| 3.1B | Q4_K_M | `740185b21d22ceb83a11c3aa62ad5842ef32c70f6096d756bbee85a1e4ec34b8` |
 
-### Key Findings
-1. **Model Proposal Failures (13 Instances across 9 Unique Scenarios):**
-   * In raw model execution, Qwen committed **4 unsafe proposals** and Gemma committed **9 unsafe proposals** across 9 unique adversarial scenarios (`ADV-HR-0009`, `ADV-HR-0010`, `ADV-HR-0012`, `ADV-HR-0022`, `ADV-HR-0027`, `ADV-HR-0028`, `ADV-HR-0029`, `ADV-US-0005`, and `ADV-GB-0015`).
-   * When mediated by LocaleGate, **100% of these 13 failure instances were deterministically intercepted** (blocked or constrained to human confirmation).
-2. **Frozen Offline Regression:** All 13 raw completion fixtures are frozen in [tests/regression/test_adversarial_model_regressions.py](file:///C:/Users/leonz/Desktop/localegate/tests/regression/test_adversarial_model_regressions.py). They replay and verify offline in <0.2 seconds without requiring inference servers.
-3. **Oracle Diagnostic Upper Bound:** A deterministic oracle diagnostic achieves 600/600 on `benchmark-v1`, establishing the deterministic upper-bound parsing capability of the rule engine.
+#### Key Findings & Evaluation Populations
+1. **Live Model Adversarial Evaluation (`adversarial-v1`, 60 Cases):**
+   * Evaluated against live local CPU execution of Qwen3.5-4B and Gemma-4-E2B-It.
+   * In raw model execution without LocaleGate, Qwen committed **4 unsafe proposals** and Gemma committed **9 unsafe proposals** across 9 unique adversarial scenarios (`ADV-HR-0009`, `ADV-HR-0010`, `ADV-HR-0012`, `ADV-HR-0022`, `ADV-HR-0027`, `ADV-HR-0028`, `ADV-HR-0029`, `ADV-US-0005`, and `ADV-GB-0015`).
+   * When mediated by LocaleGate, **100% of these 13 failure instances were deterministically intercepted** (blocked or constrained to human confirmation), with 0/60 unsafe proposals reaching confirmation capability.
+2. **Deterministic Parser Oracle Diagnostic (`benchmark-v1`, 600 Cases):**
+   * A deterministic oracle diagnostic achieves 600/600 (100.0%) concordance on `benchmark-v1`, establishing the deterministic upper-bound parsing capability of the rule engine independently of model extraction noise.
+3. **Advanced Challenge Benchmark (`adversarial-v2`, 30 Cases):**
+   * A dedicated 30-case suite targeting DST spring gaps, autumn folds, and Cyrillic script injection. Reclassified as publicly disclosed; future sealed held-out evaluations will use an independent `adversarial-v3` suite.
+4. **Frozen Offline Regression:** All 13 raw completion fixtures are frozen in [tests/regression/test_adversarial_model_regressions.py](tests/regression/test_adversarial_model_regressions.py). They replay and verify offline in <0.2 seconds without requiring inference servers.
 
 ---
 
@@ -121,9 +125,9 @@ To stress-test database contention, lock escalation, and race safety under load,
 
 To facilitate external reproduction without environment contamination:
 
-1. **Held-Out Benchmark Protection:** `data/adversarial-v2/cases.jsonl` is excluded from the public package by default, preserving the sealed challenge set for future research.
-2. **Release Package Hygiene:** Pre-packaging audits verify zero credentials, zero local Windows paths (`C:\Users`), zero SQLite databases, and zero `.gguf` binary weights.
-3. **Independent Clean-Environment Verification:** A dedicated verification script ([scripts/verify_clean_release_archive.py](file:///C:/Users/leonz/Desktop/localegate/scripts/verify_clean_release_archive.py)) was executed in an isolated temporary directory, confirming that:
+1. **Disclosed Challenge Suite & Future Held-Out Benchmark:** `data/adversarial-v2` (30 cases) is formally reclassified as a publicly disclosed evaluation suite. Its `cases.jsonl` is excluded from git tracking and default minimal packages to avoid downstream training contamination. Future sealed benchmark evaluations will use an independently authored, unreleased `adversarial-v3` challenge suite.
+2. **Release Package Hygiene:** Pre-packaging audits verify zero credentials, zero local Windows paths (`C:\\Users`), zero SQLite databases, and zero `.gguf` binary weights.
+3. **Independent Clean-Environment Verification:** A dedicated verification script ([scripts/verify_clean_release_archive.py](scripts/verify_clean_release_archive.py)) was executed in an isolated temporary directory, confirming that:
    * All 196 bundled files match cryptographic SHA-256 hashes in `archive_manifest.json`.
    * Public datasets validate with zero leakage.
    * All 13 frozen regression fixtures pass offline.
@@ -140,4 +144,4 @@ To facilitate external reproduction without environment contamination:
 
 ## 8. Conclusion
 
-LocaleGate demonstrates that small language models can be safely utilized in autonomous agent workflows when paired with a deterministic, evidence-grounded verification boundary. By enforcing verbatim evidence verification, regional grammar rules, and atomic capability tokens, LocaleGate eliminates unsafe state mutations while maintaining sub-millisecond gate execution latency.
+LocaleGate demonstrates that small language models can be safely utilized in autonomous agent workflows when paired with a deterministic, evidence-grounded verification boundary. By enforcing verbatim evidence verification, regional grammar rules, and atomic capability tokens, LocaleGate eliminates unsafe state mutations while maintaining 1.2 ms p50 and 2.1 ms p95 gate validation latency.

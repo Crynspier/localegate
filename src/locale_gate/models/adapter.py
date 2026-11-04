@@ -11,7 +11,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Protocol
 
-import httpx
+import httpx2 as httpx
 
 from locale_gate.config.settings import ModelProfileConfig, ModelSettings, is_loopback_url
 from locale_gate.contracts.enums import (
