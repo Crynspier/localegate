@@ -177,7 +177,6 @@ def create_evaluation_package(
         "docs/reproducibility.md",
         "docs/implementation-report.md",
         "docs/evaluation-methodology.md",
-        "docs/research-validation-plan.md",
         "docs/concurrency-stress-report.md",
         "docs/threat-model.md",
         "docs/architecture.md",
