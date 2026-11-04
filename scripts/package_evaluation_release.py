@@ -105,7 +105,10 @@ def audit_file_content(path: Path) -> None:
                 raise ValueError(f"Leaked local Windows path detected in {path}")
 
             # 2. Check for indirect sealed-dataset leakage in public/derived files
-            is_sealed_doc = "data/adversarial-v2" in path.as_posix()
+            is_sealed_doc = (
+                "data/adversarial-v2" in path.as_posix()
+                or "package_evaluation_release" in path.name
+            )
             if not is_sealed_doc:
                 for marker in sealed_leakage_markers:
                     if marker in content:
@@ -210,6 +213,28 @@ def create_evaluation_package(
                 files_to_bundle.append((p, f"artifacts/evaluations/{run_folder.name}/{p.name}"))
             for p in run_folder.glob("*.jsonl"):
                 files_to_bundle.append((p, f"artifacts/evaluations/{run_folder.name}/{p.name}"))
+
+    # 6. Source Code, Tests, Scripts, and Reproducible Lockfiles
+    # Enables an external researcher to unpackage into a clean directory and immediately execute:
+    # uv sync --locked && uv run locale-gate eval validate-dataset && uv run pytest tests/regression/test_adversarial_model_regressions.py
+    if (project_root / "uv.lock").exists():
+        files_to_bundle.append((project_root / "uv.lock", "uv.lock"))
+    if (project_root / "web" / "package-lock.json").exists():
+        files_to_bundle.append(
+            (project_root / "web" / "package-lock.json", "web/package-lock.json")
+        )
+
+    for p in (project_root / "src").rglob("*.py"):
+        rel_posix = p.relative_to(project_root).as_posix()
+        files_to_bundle.append((p, rel_posix))
+
+    for p in (project_root / "tests").rglob("*.py"):
+        rel_posix = p.relative_to(project_root).as_posix()
+        files_to_bundle.append((p, rel_posix))
+
+    for p in (project_root / "scripts").glob("*.py"):
+        rel_posix = p.relative_to(project_root).as_posix()
+        files_to_bundle.append((p, rel_posix))
 
     # Audit all files before packaging
     print("\nAuditing candidate files against path leakage and forbidden binaries...")

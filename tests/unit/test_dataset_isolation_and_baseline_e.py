@@ -29,13 +29,27 @@ def test_benchmark_v1_split_isolation_and_zero_leakage() -> None:
 
 
 def test_adversarial_v1_and_v2_manifest_validation() -> None:
-    for sub in ("adversarial-v1", "adversarial-v2"):
-        p = Path(f"data/{sub}/cases.jsonl")
-        assert p.is_file()
-        res = validate_benchmark_dataset(p)
-        assert res["valid"] is True, f"{sub} validation failed: {res}"
-        assert len(res["leaking_paraphrase_groups"]) == 0
-        assert len(res["oracle_mismatches"]) == 0
+    # Public adversarial-v1 must always be present and valid
+    p_v1 = Path("data/adversarial-v1/cases.jsonl")
+    assert p_v1.is_file(), "Public adversarial-v1 cases.jsonl must be present"
+    res_v1 = validate_benchmark_dataset(p_v1)
+    assert res_v1["valid"] is True, f"adversarial-v1 validation failed: {res_v1}"
+    assert len(res_v1["leaking_paraphrase_groups"]) == 0
+    assert len(res_v1["oracle_mismatches"]) == 0
+
+    # Sealed adversarial-v2: manifest and data-card must always exist
+    v2_dir = Path("data/adversarial-v2")
+    assert (v2_dir / "manifest.json").is_file(), "adversarial-v2 manifest.json must be present"
+    assert (v2_dir / "data-card.md").is_file(), "adversarial-v2 data-card.md must be present"
+
+    # If cases.jsonl is present (development environment), validate it fully.
+    # In clean release packages, cases.jsonl is intentionally omitted to protect the held-out benchmark.
+    p_v2 = v2_dir / "cases.jsonl"
+    if p_v2.is_file():
+        res_v2 = validate_benchmark_dataset(p_v2)
+        assert res_v2["valid"] is True, f"adversarial-v2 validation failed: {res_v2}"
+        assert len(res_v2["leaking_paraphrase_groups"]) == 0
+        assert len(res_v2["oracle_mismatches"]) == 0
 
 
 def test_baseline_e_babel_cldr_parsing() -> None:
