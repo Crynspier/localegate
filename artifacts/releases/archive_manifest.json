@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "package_name": "localegate_research_validation_1.0_evaluation_package",
-  "created_at_utc": "2026-11-04T18:35:54.673755+00:00",
+  "created_at_utc": "2026-11-04T18:46:17.458471+00:00",
   "project_version": "0.1.0",
   "git_provenance": {
-    "git_commit_sha": "fc80fd52c433ce9915b775497e0730496263d8e6",
+    "git_commit_sha": "5db31bbfc57ec8d1650eb339de11e07e393b2dc4",
     "git_working_tree_clean": false
   },
   "runtime_environment": {
     "os_platform": "Windows-11-10.0.26300-SP0",
     "python_version": "3.12.15",
     "sqlite_version": "3.53.1",
-    "python_lockfile_sha256": "a071259c21b09e30cf867cdf812c9350606cbe68a716f47b38c3527752d26e09",
+    "python_lockfile_sha256": "9778ab19c3e0777ce53c262c69d2f8acabee3d875599ca9bf6a5fa6ae8e01aa5",
     "frontend_lockfile_sha256": "50a3e193d393a286f3cfd04c90fe4405c8d8bab8fdc497705d71c803780af211"
   },
   "dataset_disclosure_policy": {
@@ -712,8 +712,8 @@
     },
     {
       "path": "pyproject.toml",
-      "size_bytes": 2235,
-      "sha256": "5ae109a83a27404f6169b3906bff995b3704183670354520d901995d163a35c4"
+      "size_bytes": 2255,
+      "sha256": "29337172e585ced9147f93286140ec86cfd54ea9f26655d2e6dafb343021fa7a"
     },
     {
       "path": "scripts/package_evaluation_release.py",
@@ -997,8 +997,8 @@
     },
     {
       "path": "uv.lock",
-      "size_bytes": 177139,
-      "sha256": "a071259c21b09e30cf867cdf812c9350606cbe68a716f47b38c3527752d26e09"
+      "size_bytes": 200369,
+      "sha256": "9778ab19c3e0777ce53c262c69d2f8acabee3d875599ca9bf6a5fa6ae8e01aa5"
     },
     {
       "path": "web/package-lock.json",
