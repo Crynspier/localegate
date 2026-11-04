@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "package_name": "localegate_research_validation_1.0_evaluation_package",
-  "created_at_utc": "2026-11-04T18:34:00.807031+00:00",
+  "created_at_utc": "2026-11-04T18:35:54.673755+00:00",
   "project_version": "0.1.0",
   "git_provenance": {
-    "git_commit_sha": "71e1f4199ba013b1f4bcd1594c7efe927357552a",
+    "git_commit_sha": "fc80fd52c433ce9915b775497e0730496263d8e6",
     "git_working_tree_clean": false
   },
   "runtime_environment": {
@@ -887,8 +887,8 @@
     },
     {
       "path": "src/locale_gate/models/adapter.py",
-      "size_bytes": 26603,
-      "sha256": "5e046db420c42587509a8d5159ac5bc14d47302829bae514408d3db38ac18b19"
+      "size_bytes": 26541,
+      "sha256": "fd4c64b252bbb3f43011c8a9acde9a574b81c21445a4dfefc434bf9b044f6884"
     },
     {
       "path": "src/locale_gate/models/gguf_inspector.py",

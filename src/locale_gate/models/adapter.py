@@ -143,9 +143,7 @@ class OpenAICompatibleLocalAdapter:
         http_client: httpx.Client | None = None,
     ) -> None:
         self.settings = settings or ModelSettings()
-        if not self.settings.allow_non_loopback_url and not is_loopback_url(
-            self.settings.base_url
-        ):
+        if not self.settings.allow_non_loopback_url and not is_loopback_url(self.settings.base_url):
             raise ValueError(
                 f"Outbound model base_url {self.settings.base_url!r} is not a loopback address."
             )
@@ -424,9 +422,7 @@ class OpenAICompatibleLocalAdapter:
             raw_args = fn.get("arguments") or "{}"
             try:
                 parsed_args = (
-                    parse_strict_untrusted_json(raw_args)
-                    if isinstance(raw_args, str)
-                    else raw_args
+                    parse_strict_untrusted_json(raw_args) if isinstance(raw_args, str) else raw_args
                 )
             except DuplicateJSONKeyError as exc:
                 return ModelProposalOutput(
