@@ -19,6 +19,7 @@ import argparse
 import hashlib
 import json
 import platform
+import re
 import sqlite3
 import subprocess
 import sys
@@ -76,18 +77,57 @@ def audit_file_content(path: Path) -> None:
     if path.suffix.lower() in forbidden_extensions:
         raise ValueError(f"Prohibited file type {path.suffix} detected: {path}")
 
-    # Check text files for leaked local Windows user paths
+    # Check text files for leaked local Windows user paths, sealed test data, and secrets
+    sealed_leakage_markers = [
+        "ADV2-HR-",
+        "ADV2-US-",
+        "ADV2-GB-",
+        "synthetic_adversarial_v2_authored",
+    ]
+    secret_patterns = [
+        re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----"),
+        re.compile(
+            r"(?:api[_-]?key|auth[_-]?token|secret[_-]?key)\s*[:=]\s*['\"][0-9a-zA-Z\-_]{20,}['\"]",
+            re.IGNORECASE,
+        ),
+        re.compile(r"ghp_[0-9a-zA-Z]{36}"),
+        re.compile(r"github_pat_[0-9a-zA-Z_]{82}"),
+        re.compile(r"xox[baprs]-[0-9a-zA-Z]{10,48}"),
+    ]
     text_extensions = {".json", ".jsonl", ".md", ".txt", ".csv", ".py", ".yml", ".yaml"}
     if path.suffix.lower() in text_extensions and path.stat().st_size < 10_000_000:
         try:
             content = path.read_text(encoding="utf-8", errors="ignore")
-            # Prohibit raw home directories like C:\Users\<name>
+            # 1. Prohibit raw home directories like C:\Users\<name>
             if (
                 "C:\\Users\\" in content or "C:/Users/" in content
             ) and "path sanitization" not in content.lower():
                 raise ValueError(f"Leaked local Windows path detected in {path}")
+
+            # 2. Check for indirect sealed-dataset leakage in public/derived files
+            is_sealed_doc = "data/adversarial-v2" in path.as_posix()
+            if not is_sealed_doc:
+                for marker in sealed_leakage_markers:
+                    if marker in content:
+                        raise ValueError(
+                            f"Indirect sealed dataset leakage ({marker}) detected in {path}"
+                        )
+
+            # 3. Secret and credential scanner
+            for pattern in secret_patterns:
+                if pattern.search(content):
+                    raise ValueError(
+                        f"Potential secret pattern detected in {path}: {pattern.pattern}"
+                    )
         except Exception as exc:
-            if "Leaked local Windows path" in str(exc):
+            if any(
+                term in str(exc)
+                for term in (
+                    "Leaked local Windows path",
+                    "Indirect sealed dataset leakage",
+                    "Potential secret",
+                )
+            ):
                 raise
 
 

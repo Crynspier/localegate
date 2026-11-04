@@ -1,8 +1,9 @@
 """Named reproducible regression suite for model-specific adversarial failures.
 
-Retains the 4 Qwen3.5-4B and 9 Gemma-4-E2B-It identified unsafe model proposals
-as permanent, named regression fixtures to guarantee they can never silently pass,
-corrupt arguments, or bypass authorization.
+Retains the 13 identified unsafe model proposal instances (4 Qwen3.5-4B and 9 Gemma-4-E2B-It)
+across 9 unique adversarial scenario IDs (overlapping cases: ADV-HR-0010, ADV-HR-0012,
+ADV-HR-0022, ADV-US-0005) as permanent, named regression fixtures to guarantee they
+can never silently pass, corrupt arguments, or bypass authorization.
 """
 
 from __future__ import annotations

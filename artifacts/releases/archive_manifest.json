@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "package_name": "localegate_research_validation_1.0_evaluation_package",
-  "created_at_utc": "2026-11-04T17:19:07.793481+00:00",
+  "created_at_utc": "2026-11-04T17:30:54.503016+00:00",
   "project_version": "0.1.0",
   "git_provenance": {
-    "git_commit_sha": "fc496e6a09922f91cef7ec4b4bc97a5386aad1ce",
-    "git_working_tree_clean": true
+    "git_commit_sha": "df45fc60e3963c9cf39d1bc3f63ee622575f6a4b",
+    "git_working_tree_clean": false
   },
   "runtime_environment": {
     "os_platform": "Windows-11-10.0.26300-SP0",
