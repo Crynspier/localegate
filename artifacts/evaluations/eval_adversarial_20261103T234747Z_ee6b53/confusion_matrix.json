@@ -1,0 +1,32 @@
+{
+  "D_parser_oracle": {
+    "awaiting_confirmation": {
+      "awaiting_confirmation": 15,
+      "needs_clarification": 0,
+      "blocked": 0,
+      "no_action": 0,
+      "model_error": 0
+    },
+    "needs_clarification": {
+      "awaiting_confirmation": 0,
+      "needs_clarification": 10,
+      "blocked": 0,
+      "no_action": 0,
+      "model_error": 0
+    },
+    "blocked": {
+      "awaiting_confirmation": 0,
+      "needs_clarification": 0,
+      "blocked": 24,
+      "no_action": 0,
+      "model_error": 0
+    },
+    "no_action": {
+      "awaiting_confirmation": 0,
+      "needs_clarification": 0,
+      "blocked": 0,
+      "no_action": 11,
+      "model_error": 0
+    }
+  }
+}

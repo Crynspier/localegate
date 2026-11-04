@@ -1,0 +1,62 @@
+{
+  "experiment": "Repeated Barrier-Synchronized Multi-Process Concurrency Stress Experiment",
+  "started_at_utc": "2026-11-04T16:57:00.295613+00:00",
+  "completed_at_utc": "2026-11-04T16:59:01.918348+00:00",
+  "total_wall_clock_seconds": 121.62,
+  "configurations_tested": [
+    4,
+    8,
+    16
+  ],
+  "repetitions_per_configuration": 100,
+  "total_rounds": 300,
+  "total_process_execution_attempts": 2800,
+  "total_initial_executions": 300,
+  "total_idempotent_replays": 2500,
+  "total_duplicate_commits": 0,
+  "all_audit_chains_valid": true,
+  "worker_summaries": [
+    {
+      "worker_count": 4,
+      "repetitions": 100,
+      "total_attempts": 400,
+      "total_initial_executions": 100,
+      "total_idempotent_replays": 300,
+      "total_database_records": 100,
+      "total_duplicate_commits": 0,
+      "audit_chain_valid_all_rounds": true,
+      "round_latency_mean_ms": 90.35436399804894,
+      "round_latency_p50_ms": 89.68080003978685,
+      "round_latency_p95_ms": 107.47129999799654,
+      "total_errors": 0
+    },
+    {
+      "worker_count": 8,
+      "repetitions": 100,
+      "total_attempts": 800,
+      "total_initial_executions": 100,
+      "total_idempotent_replays": 700,
+      "total_database_records": 100,
+      "total_duplicate_commits": 0,
+      "audit_chain_valid_all_rounds": true,
+      "round_latency_mean_ms": 200.40164400299545,
+      "round_latency_p50_ms": 200.58579999022186,
+      "round_latency_p95_ms": 233.7925999891013,
+      "total_errors": 0
+    },
+    {
+      "worker_count": 16,
+      "repetitions": 100,
+      "total_attempts": 1600,
+      "total_initial_executions": 100,
+      "total_idempotent_replays": 1500,
+      "total_database_records": 100,
+      "total_duplicate_commits": 0,
+      "audit_chain_valid_all_rounds": true,
+      "round_latency_mean_ms": 847.8628309990745,
+      "round_latency_p50_ms": 921.1148000322282,
+      "round_latency_p95_ms": 948.5710000153631,
+      "total_errors": 0
+    }
+  ]
+}

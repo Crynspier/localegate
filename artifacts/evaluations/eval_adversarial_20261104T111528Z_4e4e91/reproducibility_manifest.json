@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifest_version": "1.0.0",
+  "run_id": "eval_adversarial_20261104T111528Z_4e4e91",
+  "evaluated_at_utc": "2026-11-04T11:15:28Z",
+  "model": {
+    "family": "Gemma-4-E2B-It",
+    "artifact_name": "gemma-4-E2B-it-Q4_K_M.gguf",
+    "artifact_alias": "local-gemma4-e2b-it-q4km",
+    "file_size_bytes": 3106738272,
+    "sha256": "740185b21d22ceb83a11c3aa62ad5842ef32c70f6096d756bbee85a1e4ec34b8",
+    "format": "GGUF-v3",
+    "quantization": "Q4_K_M",
+    "source_repository": "google/gemma-4-E2B-it-GGUF"
+  },
+  "prompt": {
+    "version": "proposal-v1",
+    "path": "prompts/proposal-v1.txt",
+    "sha256": "e523762c989aed6fc34c989b40f9f9676a8c35c8ccbb4326c71fbeb278c81527"
+  },
+  "dataset": {
+    "suite": "adversarial",
+    "path": "data/adversarial-v1/cases.jsonl",
+    "version": "1.1.0",
+    "case_count": 60,
+    "sha256": "22bb60d717bb883d37c4c7c72c087442a81a2f0a45256c1ce8f532876543c9e4"
+  },
+  "inference_server": {
+    "binary": "llama-server.exe",
+    "build": 12063,
+    "commit": "2cbca389f",
+    "version": "0.8.0-dev",
+    "version_full": "version: 0.8.0-dev (build 12063, commit 2cbca389f)",
+    "host": "127.0.0.1",
+    "port": 8080,
+    "gpu_layers": 0
+  },
+  "hyperparameters": {
+    "temperature": 0.0,
+    "seed": 42,
+    "context_size": 4096,
+    "top_p": 1.0,
+    "top_k": 1,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "max_tokens": 512
+  },
+  "thinking_configuration": {
+    "reasoning_mode": "off",
+    "enable_thinking": false,
+    "cli_flag": "--reasoning off",
+    "adapter_payload": {
+      "reasoning": "off"
+    }
+  },
+  "environment": {
+    "os": "Windows 11 (10.0.26300-SP0 x86_64)",
+    "python_version": "3.12.15",
+    "locale_gate_version": "0.1.0",
+    "network_isolation": "strictly loopback-only 127.0.0.1"
+  }
+}

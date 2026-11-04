@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifest_name": "LocaleGate Research Validation 1.0 - Model & Dataset Provenance Manifest",
+  "generated_at_utc": "2026-11-04T12:30:00Z",
+  "project_version": "0.1.0",
+  "provenance_standards": {
+    "deterministic_digest_algorithm": "SHA-256",
+    "unicode_normalization": "NFC",
+    "network_isolation": "Strictly loopback-only 127.0.0.1, zero external telemetry"
+  },
+  "datasets": {
+    "adversarial_v1": {
+      "path": "data/adversarial-v1/cases.jsonl",
+      "version": "1.1.0",
+      "case_count": 60,
+      "sha256": "22bb60d717bb883d37c4c7c72c087442a81a2f0a45256c1ce8f532876543c9e4",
+      "locales": {
+        "hr-HR": 30,
+        "en-US": 15,
+        "en-GB": 15
+      },
+      "decisions": {
+        "awaiting_confirmation": 15,
+        "blocked": 24,
+        "needs_clarification": 10,
+        "no_action": 11
+      }
+    },
+    "benchmark_v1": {
+      "path": "data/benchmark-v1/cases.jsonl",
+      "version": "1.0.0",
+      "case_count": 600,
+      "sha256": "b535072ca516099cab49256f33892e3f46e9d50dd1d1e73668e011dfc511d734",
+      "splits": {
+        "dev": 120,
+        "test": 480
+      },
+      "locales": {
+        "hr-HR": 300,
+        "en-US": 150,
+        "en-GB": 150
+      }
+    }
+  },
+  "prompts": {
+    "proposal_v1": {
+      "path": "prompts/proposal-v1.txt",
+      "version": "1.0.0",
+      "sha256": "e523762c989aed6fc34c989b40f9f9676a8c35c8ccbb4326c71fbeb278c81527"
+    }
+  },
+  "runtime_and_tools": {
+    "llama_server": {
+      "binary": "llama-server.exe",
+      "build": 12063,
+      "commit": "2cbca389f",
+      "version": "0.8.0-dev",
+      "version_full": "version: 0.8.0-dev (build 12063, commit 2cbca389f)",
+      "command_line_flags": [
+        "--host 127.0.0.1",
+        "--port 8080",
+        "--ctx-size 4096",
+        "--parallel 1",
+        "--temp 0.0",
+        "--seed 42",
+        "--reasoning off",
+        "--n-gpu-layers 0"
+      ]
+    },
+    "host_environment": {
+      "os": "Windows 11 (10.0.26300-SP0 x86_64)",
+      "python_version": "3.12.15",
+      "node_version": "v20.18.0",
+      "uv_version": "0.9.x"
+    }
+  },
+  "evaluated_models": {
+    "qwen35_4b_q4km": {
+      "family": "Qwen3.5-4B",
+      "artifact_alias": "local-qwen35-4b-q4km",
+      "file_size_bytes": 2740937888,
+      "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+      "quantization": "Q4_K_M",
+      "context_window_evaluation": 4096,
+      "thinking_configuration": {
+        "reasoning": "off",
+        "enable_thinking": false
+      },
+      "adversarial_run_id": "eval_adversarial_20261104T105609Z_2a101b"
+    },
+    "gemma4_e2b_it_q4km": {
+      "family": "Gemma-4-E2B-It",
+      "artifact_alias": "local-gemma4-e2b-it-q4km",
+      "file_size_bytes": 3106738272,
+      "sha256": "740185b21d22ceb83a11c3aa62ad5842ef32c70f6096d756bbee85a1e4ec34b8",
+      "quantization": "Q4_K_M",
+      "context_window_evaluation": 4096,
+      "thinking_configuration": {
+        "reasoning": "off",
+        "enable_thinking": false
+      },
+      "adversarial_run_id": "eval_adversarial_20261104T111528Z_4e4e91"
+    }
+  }
+}

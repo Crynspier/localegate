@@ -1,0 +1,32 @@
+{
+  "run_id": "smoke_qwen35_q4km_nonthinking",
+  "suite": "smoke",
+  "cases_evaluated": 12,
+  "systems_evaluated": [
+    "A_raw_model_baseline",
+    "B_schema_only_baseline",
+    "C_locale_gate",
+    "D_parser_oracle"
+  ],
+  "model_evaluated": true,
+  "prompt_version": "proposal-v1",
+  "prompt_sha256": "aa26fbfe6f3aa071fe9d8ff1a975588ef6df178f748febc922a1f700ee06be64",
+  "dataset_version": "1.0.0",
+  "dataset_sha256": "6b7611b6f5ed0954c012280e1b074e4faaa7850377c90d5db0dac888209be8da",
+  "sampling_profile": {
+    "name": "qwen35_q4km_recommended_nonthinking",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "max_tokens": 512,
+    "enable_thinking": false,
+    "seed": 20261103
+  },
+  "context_size": 4096,
+  "gpu_layers": 0,
+  "model_sha256": "skipped",
+  "llama_cpp_version": "version: 0.8.0-dev (build 12063, commit 2cbca389f)",
+  "timestamp_utc": "2026-11-03T22:30:20.113503+00:00"
+}

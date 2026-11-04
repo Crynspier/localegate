@@ -1,0 +1,31 @@
+{
+  "valid": true,
+  "dataset_version": "1.1.0",
+  "sha256": "4978965f9a5cb1b9e2f7619b38b4df81906de4bebe7b6c9714ba3abb8eca3db3",
+  "total_cases": 600,
+  "audited_cases": 600,
+  "draft_cases": 0,
+  "by_locale": {
+    "hr-HR": 300,
+    "en-US": 150,
+    "en-GB": 150
+  },
+  "by_decision": {
+    "awaiting_confirmation": 327,
+    "needs_clarification": 109,
+    "blocked": 109,
+    "no_action": 55
+  },
+  "by_suite": {
+    "smoke": 12,
+    "pilot": 60,
+    "full": 600,
+    "adversarial": 0
+  },
+  "by_split": {
+    "dev": 120,
+    "test": 480
+  },
+  "leaking_paraphrase_groups": [],
+  "oracle_mismatches": []
+}

@@ -1,0 +1,31 @@
+{
+  "run_id": "eval_test_20261103T234753Z_fa5620",
+  "suite": "test",
+  "cases_evaluated": 480,
+  "systems_evaluated": [
+    "D_parser_oracle"
+  ],
+  "model_evaluated": false,
+  "model_alias": "oracle-only",
+  "model_family": "Qwen3.5-4B",
+  "prompt_version": "proposal-v1",
+  "prompt_sha256": "aa26fbfe6f3aa071fe9d8ff1a975588ef6df178f748febc922a1f700ee06be64",
+  "dataset_version": "1.1.0",
+  "dataset_sha256": "4978965f9a5cb1b9e2f7619b38b4df81906de4bebe7b6c9714ba3abb8eca3db3",
+  "sampling_profile": {
+    "name": "qwen35_q4km_primary",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 1,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "max_tokens": 512,
+    "enable_thinking": false,
+    "seed": 20261103
+  },
+  "context_size": 4096,
+  "gpu_layers": 0,
+  "model_sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+  "llama_cpp_version": "version: 0.8.0-dev (build 12063, commit 2cbca389f)",
+  "timestamp_utc": "2026-11-03T23:47:58.078227+00:00"
+}

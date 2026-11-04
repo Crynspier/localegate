@@ -1,0 +1,38 @@
+{
+  "run_id": "eval_smoke_20261103T234947Z_170581",
+  "suite": "smoke",
+  "cases_evaluated": 12,
+  "systems_evaluated": [
+    "A_raw_model_baseline",
+    "B_schema_only_baseline",
+    "E_strong_conventional_baseline",
+    "Ab1_locale_parser_no_evidence",
+    "Ab2_evidence_only_naive_parser",
+    "Ab3_no_role_binding",
+    "C_locale_gate",
+    "D_parser_oracle"
+  ],
+  "model_evaluated": true,
+  "model_alias": "local-qwen35-4b-q4km",
+  "model_family": "Qwen3.5-4B",
+  "prompt_version": "proposal-v1",
+  "prompt_sha256": "aa26fbfe6f3aa071fe9d8ff1a975588ef6df178f748febc922a1f700ee06be64",
+  "dataset_version": "1.1.0",
+  "dataset_sha256": "4978965f9a5cb1b9e2f7619b38b4df81906de4bebe7b6c9714ba3abb8eca3db3",
+  "sampling_profile": {
+    "name": "qwen35_q4km_primary",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 1,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "max_tokens": 512,
+    "enable_thinking": false,
+    "seed": 20261103
+  },
+  "context_size": 4096,
+  "gpu_layers": 0,
+  "model_sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+  "llama_cpp_version": "version: 0.8.0-dev (build 12063, commit 2cbca389f)",
+  "timestamp_utc": "2026-11-03T23:52:41.276515+00:00"
+}

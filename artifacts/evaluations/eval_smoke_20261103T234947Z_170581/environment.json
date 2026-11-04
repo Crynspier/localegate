@@ -1,0 +1,7 @@
+{
+  "os": "Windows-11-10.0.26300-SP0",
+  "python_version": "3.12.15 (main, Oct 14 2026, 01:08:45) [MSC v.1944 64 bit (AMD64)]",
+  "locale_gate_version": "0.1.0",
+  "llama_cpp_version": "version: 0.8.0-dev (build 12063, commit 2cbca389f)",
+  "timestamp_utc": "2026-11-03T23:52:36.876296+00:00"
+}

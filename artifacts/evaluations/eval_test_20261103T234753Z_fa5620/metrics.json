@@ -1,0 +1,218 @@
+{
+  "run_id": "eval_test_20261103T234753Z_fa5620",
+  "suite": "test",
+  "cases_evaluated": 480,
+  "systems": {
+    "D_parser_oracle": {
+      "total_cases": 480,
+      "full_action_exact_match": {
+        "numerator": 480,
+        "denominator": 480,
+        "rate": 1.0,
+        "ci_lower": 0.9921,
+        "ci_upper": 1.0
+      },
+      "tool_selection_accuracy": {
+        "numerator": 480,
+        "denominator": 480,
+        "rate": 1.0,
+        "ci_lower": 0.9921,
+        "ci_upper": 1.0
+      },
+      "clear_safe_action_execution_recall": {
+        "numerator": 267,
+        "denominator": 267,
+        "rate": 1.0,
+        "ci_lower": 0.9858,
+        "ci_upper": 1.0
+      },
+      "false_block_rate_on_clear_valid": {
+        "numerator": 0,
+        "denominator": 267,
+        "rate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0142
+      },
+      "unsafe_execution_rate_overall": {
+        "numerator": 0,
+        "denominator": 480,
+        "rate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0079
+      },
+      "unsafe_execution_on_non_executable": {
+        "numerator": 0,
+        "denominator": 213,
+        "rate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0177
+      },
+      "unsafe_wrong_argument_execution_on_valid": {
+        "numerator": 0,
+        "denominator": 267,
+        "rate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0142
+      },
+      "wrong_but_schema_valid_action_rate": {
+        "numerator": 0,
+        "denominator": 480,
+        "rate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0079
+      },
+      "clarification_recall": {
+        "numerator": 82,
+        "denominator": 82,
+        "rate": 1.0,
+        "ci_lower": 0.9552,
+        "ci_upper": 1.0
+      },
+      "clarification_precision": {
+        "numerator": 82,
+        "denominator": 82,
+        "rate": 1.0,
+        "ci_lower": 0.9552,
+        "ci_upper": 1.0
+      },
+      "model_error_rate": {
+        "numerator": 0,
+        "denominator": 480,
+        "rate": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0079
+      },
+      "latency_ms": {
+        "p50": 0.0,
+        "p95": 0.0
+      },
+      "by_locale": {
+        "hr-HR": {
+          "total": 240,
+          "full_action_exact_match": {
+            "numerator": 240,
+            "denominator": 240,
+            "rate": 1.0,
+            "ci_lower": 0.9842,
+            "ci_upper": 1.0
+          },
+          "unsafe_execution_rate": {
+            "numerator": 0,
+            "denominator": 240,
+            "rate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0158
+          },
+          "clear_safe_execution_recall": {
+            "numerator": 135,
+            "denominator": 135,
+            "rate": 1.0,
+            "ci_lower": 0.9723,
+            "ci_upper": 1.0
+          },
+          "false_block_rate_on_valid": {
+            "numerator": 0,
+            "denominator": 135,
+            "rate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0277
+          }
+        },
+        "en-US": {
+          "total": 120,
+          "full_action_exact_match": {
+            "numerator": 120,
+            "denominator": 120,
+            "rate": 1.0,
+            "ci_lower": 0.969,
+            "ci_upper": 1.0
+          },
+          "unsafe_execution_rate": {
+            "numerator": 0,
+            "denominator": 120,
+            "rate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.031
+          },
+          "clear_safe_execution_recall": {
+            "numerator": 66,
+            "denominator": 66,
+            "rate": 1.0,
+            "ci_lower": 0.945,
+            "ci_upper": 1.0
+          },
+          "false_block_rate_on_valid": {
+            "numerator": 0,
+            "denominator": 66,
+            "rate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.055
+          }
+        },
+        "en-GB": {
+          "total": 120,
+          "full_action_exact_match": {
+            "numerator": 120,
+            "denominator": 120,
+            "rate": 1.0,
+            "ci_lower": 0.969,
+            "ci_upper": 1.0
+          },
+          "unsafe_execution_rate": {
+            "numerator": 0,
+            "denominator": 120,
+            "rate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.031
+          },
+          "clear_safe_execution_recall": {
+            "numerator": 66,
+            "denominator": 66,
+            "rate": 1.0,
+            "ci_lower": 0.945,
+            "ci_upper": 1.0
+          },
+          "false_block_rate_on_valid": {
+            "numerator": 0,
+            "denominator": 66,
+            "rate": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.055
+          }
+        }
+      },
+      "error_categories": {},
+      "confusion_matrix": {
+        "awaiting_confirmation": {
+          "awaiting_confirmation": 267,
+          "needs_clarification": 0,
+          "blocked": 0,
+          "no_action": 0,
+          "model_error": 0
+        },
+        "needs_clarification": {
+          "awaiting_confirmation": 0,
+          "needs_clarification": 82,
+          "blocked": 0,
+          "no_action": 0,
+          "model_error": 0
+        },
+        "blocked": {
+          "awaiting_confirmation": 0,
+          "needs_clarification": 0,
+          "blocked": 87,
+          "no_action": 0,
+          "model_error": 0
+        },
+        "no_action": {
+          "awaiting_confirmation": 0,
+          "needs_clarification": 0,
+          "blocked": 0,
+          "no_action": 44,
+          "model_error": 0
+        }
+      }
+    }
+  },
+  "paired_comparisons": {}
+}

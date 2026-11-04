@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifest_version": "1.0.0",
+  "run_id": "eval_adversarial_20261104T105609Z_2a101b",
+  "evaluated_at_utc": "2026-11-04T10:56:09Z",
+  "model": {
+    "family": "Qwen3.5-4B",
+    "artifact_name": "Qwen3.5-4B-Q4_K_M.gguf",
+    "artifact_alias": "local-qwen35-4b-q4km",
+    "file_size_bytes": 2740937888,
+    "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+    "format": "GGUF-v3",
+    "quantization": "Q4_K_M",
+    "source_repository": "unsloth/Qwen3.5-4B-GGUF"
+  },
+  "prompt": {
+    "version": "proposal-v1",
+    "path": "prompts/proposal-v1.txt",
+    "sha256": "e523762c989aed6fc34c989b40f9f9676a8c35c8ccbb4326c71fbeb278c81527"
+  },
+  "dataset": {
+    "suite": "adversarial",
+    "path": "data/adversarial-v1/cases.jsonl",
+    "version": "1.1.0",
+    "case_count": 60,
+    "sha256": "22bb60d717bb883d37c4c7c72c087442a81a2f0a45256c1ce8f532876543c9e4"
+  },
+  "inference_server": {
+    "binary": "llama-server.exe",
+    "build": 12063,
+    "commit": "2cbca389f",
+    "version": "0.8.0-dev",
+    "version_full": "version: 0.8.0-dev (build 12063, commit 2cbca389f)",
+    "host": "127.0.0.1",
+    "port": 8080,
+    "gpu_layers": 0
+  },
+  "hyperparameters": {
+    "temperature": 0.0,
+    "seed": 42,
+    "context_size": 4096,
+    "top_p": 1.0,
+    "top_k": 1,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "max_tokens": 512
+  },
+  "thinking_configuration": {
+    "reasoning_mode": "off",
+    "enable_thinking": false,
+    "cli_flag": "--reasoning off",
+    "adapter_payload": {
+      "reasoning": "off"
+    }
+  },
+  "environment": {
+    "os": "Windows 11 (10.0.26300-SP0 x86_64)",
+    "python_version": "3.12.15",
+    "locale_gate_version": "0.1.0",
+    "network_isolation": "strictly loopback-only 127.0.0.1"
+  }
+}
