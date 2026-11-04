@@ -210,7 +210,7 @@ The 60-case adversarial suite evaluates whether the gate intercepts dangerous, a
 ##### Primary Model: `Qwen3.5-4B-Q4_K_M.gguf`
 *Run ID: `eval_adversarial_20261104T105609Z_2a101b`*
 
-| System | Full Action Exact Match | Clear Safe Execution Recall | Unsafe Execution Rate | False Block Rate (Valid) | Latency p50 / p95 (ms) |
+| System | Full Action Exact Match | Clear Safe Execution Recall | Legacy Strict Disagreement Rate (Pre-Adjudication) | False Block Rate (Valid) | Latency p50 / p95 (ms) |
 |---|---:|---:|---:|---:|---:|
 | `D_parser_oracle` (Diagnostic) | 100.0% [94.0%, 100.0%] (60/60) | 100.0% [79.6%, 100.0%] (15/15) | 0.0% [0.0%, 6.0%] (0/60) | 0.0% [0.0%, 20.4%] (0/15) | 0.0 / 0.0 |
 | `A_raw_model_baseline` | 21.7% [13.1%, 33.6%] (13/60) | 33.3% [15.2%, 58.3%] (5/15) | 60.0% [47.4%, 71.4%] (36/60) | 26.7% [10.9%, 51.9%] (4/15) | 13444.6 / 15828.6 |
@@ -222,14 +222,14 @@ The 60-case adversarial suite evaluates whether the gate intercepts dangerous, a
 | `C_locale_gate` | **68.3%** [55.8%, 78.7%] (41/60) | **73.3%** [48.1%, 89.1%] (11/15) | **11.7%** [5.8%, 22.2%] (7/60) | **20.0%** [7.0%, 45.2%] (3/15) | 13444.6 / 15828.6 |
 
 **Paired Cluster Bootstrap (`C_locale_gate` vs Baselines, 2,000 resamples):**
-- **`C_vs_A`:** Exact Match Δ = **+46.67%** [95% CI: +35.00%, +58.33%], Unsafe Δ = **-48.33%** [95% CI: -60.00%, -36.67%]
-- **`C_vs_E`:** Exact Match Δ = **+41.67%** [95% CI: +28.33%, +53.33%], Unsafe Δ = **-43.33%** [95% CI: -55.00%, -30.00%]
-- **`C_vs_Ab2`:** Exact Match Δ = **+41.67%** [95% CI: +30.00%, +53.33%], Unsafe Δ = **-38.33%** [95% CI: -50.00%, -26.67%]
+- **`C_vs_A`:** Exact Match Δ = **+46.67%** [95% CI: +35.00%, +58.33%], Strict Disagreement Δ = **-48.33%** [95% CI: -60.00%, -36.67%]
+- **`C_vs_E`:** Exact Match Δ = **+41.67%** [95% CI: +28.33%, +53.33%], Strict Disagreement Δ = **-43.33%** [95% CI: -55.00%, -30.00%]
+- **`C_vs_Ab2`:** Exact Match Δ = **+41.67%** [95% CI: +30.00%, +53.33%], Strict Disagreement Δ = **-38.33%** [95% CI: -50.00%, -26.67%]
 
 ##### Secondary Model: `Gemma-4-E2B-it-Q4_K_M.gguf`
 *Run ID: `eval_adversarial_20261104T111528Z_4e4e91`*
 
-| System | Full Action Exact Match | Clear Safe Execution Recall | Unsafe Execution Rate | False Block Rate (Valid) | Latency p50 / p95 (ms) |
+| System | Full Action Exact Match | Clear Safe Execution Recall | Legacy Strict Disagreement Rate (Pre-Adjudication) | False Block Rate (Valid) | Latency p50 / p95 (ms) |
 |---|---:|---:|---:|---:|---:|
 | `D_parser_oracle` (Diagnostic) | 100.0% [94.0%, 100.0%] (60/60) | 100.0% [79.6%, 100.0%] (15/15) | 0.0% [0.0%, 6.0%] (0/60) | 0.0% [0.0%, 20.4%] (0/15) | 0.0 / 0.0 |
 | `A_raw_model_baseline` | 10.0% [4.7%, 20.2%] (6/60) | 13.3% [3.7%, 37.9%] (2/15) | 66.7% [54.1%, 77.3%] (40/60) | 26.7% [10.9%, 51.9%] (4/15) | 9874.7 / 14131.8 |
@@ -241,9 +241,9 @@ The 60-case adversarial suite evaluates whether the gate intercepts dangerous, a
 | `C_locale_gate` | **50.0%** [37.7%, 62.3%] (30/60) | **40.0%** [19.8%, 64.2%] (6/15) | **20.0%** [11.8%, 31.8%] (12/60) | **33.3%** [15.2%, 58.3%] (5/15) | 9874.7 / 14131.8 |
 
 **Paired Cluster Bootstrap (`C_locale_gate` vs Baselines, 2,000 resamples):**
-- **`C_vs_A`:** Exact Match Δ = **+40.00%** [95% CI: +28.33%, +51.67%], Unsafe Δ = **-46.67%** [95% CI: -58.33%, -33.33%]
-- **`C_vs_E`:** Exact Match Δ = **+36.67%** [95% CI: +25.00%, +48.33%], Unsafe Δ = **-43.33%** [95% CI: -56.67%, -31.67%]
-- **`C_vs_Ab2`:** Exact Match Δ = **+25.00%** [95% CI: +15.00%, +36.67%], Unsafe Δ = **-31.67%** [95% CI: -43.33%, -20.00%]
+- **`C_vs_A`:** Exact Match Δ = **+40.00%** [95% CI: +28.33%, +51.67%], Strict Disagreement Δ = **-46.67%** [95% CI: -58.33%, -33.33%]
+- **`C_vs_E`:** Exact Match Δ = **+36.67%** [95% CI: +25.00%, +48.33%], Strict Disagreement Δ = **-43.33%** [95% CI: -56.67%, -31.67%]
+- **`C_vs_Ab2`:** Exact Match Δ = **+25.00%** [95% CI: +15.00%, +36.67%], Strict Disagreement Δ = **-31.67%** [95% CI: -43.33%, -20.00%]
 
 ---
 

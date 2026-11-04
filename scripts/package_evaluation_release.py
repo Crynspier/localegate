@@ -175,7 +175,6 @@ def create_evaluation_package(
     # 3. Documentation & Reports
     docs_to_include = [
         "docs/reproducibility.md",
-        "docs/implementation-report.md",
         "docs/evaluation-methodology.md",
         "docs/concurrency-stress-report.md",
         "docs/threat-model.md",
