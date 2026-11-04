@@ -29,7 +29,10 @@ from locale_gate.contracts.models import (
 )
 from locale_gate.evidence.resolver import resolve_evidence_quote
 from locale_gate.gate.pipeline import LocaleGatePipeline
-from locale_gate.tools.registry import compute_canonical_action_digest, get_tool_manifest
+from locale_gate.tools.registry import (
+    compute_canonical_action_digest,
+    get_tool_manifest,
+)
 
 
 def _naive_en_number_extract(raw: str) -> tuple[str, str]:

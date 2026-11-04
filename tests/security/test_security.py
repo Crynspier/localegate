@@ -14,7 +14,10 @@ from locale_gate.config.settings import AppSettings, ModelSettings, Settings
 from locale_gate.contracts.enums import GateDecisionStatus, ReasonCode
 from locale_gate.contracts.models import TrustedRequestContext
 from locale_gate.gate.pipeline import LocaleGatePipeline
-from locale_gate.models.adapter import DeterministicMockAdapter, OpenAICompatibleLocalAdapter
+from locale_gate.models.adapter import (
+    DeterministicMockAdapter,
+    OpenAICompatibleLocalAdapter,
+)
 from locale_gate.tools.registry import html_safe_text
 from locale_gate.tools.simulator import SimulatedStore
 

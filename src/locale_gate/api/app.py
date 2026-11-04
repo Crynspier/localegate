@@ -18,7 +18,11 @@ from locale_gate import __version__
 from locale_gate.agent.orchestrator import LocalAgentOrchestrator
 from locale_gate.benchmark.runner import BenchmarkRunner
 from locale_gate.benchmark.schema import load_benchmark_cases
-from locale_gate.config.settings import Settings, load_settings, resolve_known_model_spec
+from locale_gate.config.settings import (
+    Settings,
+    load_settings,
+    resolve_known_model_spec,
+)
 from locale_gate.contracts.models import TrustedRequestContext
 from locale_gate.gate.pipeline import LocaleGatePipeline
 from locale_gate.models.adapter import ModelAdapter, OpenAICompatibleLocalAdapter

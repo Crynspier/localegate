@@ -4,7 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from locale_gate.benchmark.schema import load_benchmark_cases, validate_benchmark_dataset
+from locale_gate.benchmark.schema import (
+    load_benchmark_cases,
+    validate_benchmark_dataset,
+)
 from locale_gate.contracts.models import TrustedRequestContext
 from locale_gate.gate.baselines import (
     RawModelBaselinePipeline,

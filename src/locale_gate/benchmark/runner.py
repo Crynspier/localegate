@@ -37,7 +37,10 @@ from locale_gate.gate.baselines import (
 )
 from locale_gate.gate.pipeline import LocaleGatePipeline
 from locale_gate.models.adapter import ModelAdapter, load_system_prompt
-from locale_gate.models.gguf_inspector import inspect_gguf_artifact, query_llama_server_version
+from locale_gate.models.gguf_inspector import (
+    inspect_gguf_artifact,
+    query_llama_server_version,
+)
 
 
 class BenchmarkRunner:
