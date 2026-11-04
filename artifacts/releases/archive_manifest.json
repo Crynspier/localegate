@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "package_name": "localegate_research_validation_1.0_evaluation_package",
-  "created_at_utc": "2026-11-04T19:30:29.072972+00:00",
+  "created_at_utc": "2026-11-04T19:35:40.731844+00:00",
   "project_version": "0.1.0",
   "git_provenance": {
-    "git_commit_sha": "645e181569367ff890abf3f8ff9f2ccdbae646c1",
+    "git_commit_sha": "4a704f998d5e0e76da55e185fc5338d2f1fcb40d",
     "git_working_tree_clean": true
   },
   "packaging_environment": {
@@ -31,7 +31,7 @@
     "cases_included_in_bundle": false,
     "status_note": "adversarial-v2 was reclassified from sealed to publicly disclosed following repository exposure. Its cases.jsonl is un-tracked from git and omitted by default from minimal evaluation bundles to keep distribution lightweight. Future held-out evaluations will be conducted on an independently held adversarial-v3 benchmark suite."
   },
-  "files_count": 195,
+  "files_count": 194,
   "files": [
     {
       "path": "CONTRIBUTING.md",
@@ -45,8 +45,8 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 29895,
-      "sha256": "8ac3cccdb68c266f9fe24c6cd72b9054f09ddd0117bb569c744661f04e0a7330"
+      "size_bytes": 30031,
+      "sha256": "7a9e7619bea11c14a0623139390d61a48ec90f326fd22efcfd21742d97e6404a"
     },
     {
       "path": "SECURITY.md",
@@ -684,11 +684,6 @@
       "sha256": "d887c66e840ff1dc1b43af7bf83389ab52d7d0e33a2d75cbe36d6f45da6a333b"
     },
     {
-      "path": "docs/implementation-report.md",
-      "size_bytes": 21972,
-      "sha256": "eee4f14ff718cccd47351afedc7f5032fe2ec6048a5a6c767c806f646fcc0f97"
-    },
-    {
       "path": "docs/model-setup-windows.md",
       "size_bytes": 1510,
       "sha256": "7640a68d40672a8001f98eb7446222cb3d7ef8dca4c2724858d8583c14023091"
@@ -720,8 +715,8 @@
     },
     {
       "path": "scripts/package_evaluation_release.py",
-      "size_bytes": 14618,
-      "sha256": "72be602046df4fdce44c74ff0704330fb82221a7d01c379effa115e861da0864"
+      "size_bytes": 14577,
+      "sha256": "a2580988c33aac2d770a2288811715d47c461847062010f0ab1e20678f2c5978"
     },
     {
       "path": "scripts/run_repeated_concurrency_stress.py",
