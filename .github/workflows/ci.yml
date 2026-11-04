@@ -28,7 +28,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Sync dependencies
-        run: uv sync --locked --dev
+        run: uv sync --locked --all-extras
 
       - name: Ruff format check
         run: uv run ruff format --check src tests
