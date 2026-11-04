@@ -46,7 +46,7 @@ coverage.xml
 *.safetensors
 *.pt
 *.pth
-models/
+/models/
 *.db
 *.db-shm
 *.db-wal
