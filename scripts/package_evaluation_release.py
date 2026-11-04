@@ -136,7 +136,7 @@ def audit_file_content(path: Path) -> None:
 
 def create_evaluation_package(
     output_zip_path: Path,
-    include_sealed: bool = False,
+    include_adversarial_v2_cases: bool = False,
 ) -> Path:
     """Create a self-contained, audited ZIP archive for external technical reviewers."""
     project_root = Path(__file__).resolve().parent.parent
@@ -144,7 +144,7 @@ def create_evaluation_package(
     print("LocaleGate Research Validation 1.0 — External Evaluation Packager")
     print(f"Target archive: {output_zip_path}")
     print(
-        f"Sealed challenge inclusion: {'INCLUDED (WARNING: Held-out benchmark disclosed)' if include_sealed else 'PROTECTED (data/adversarial-v2 cases omitted)'}"
+        f"Adversarial-v2 cases inclusion: {'INCLUDED (cases.jsonl bundled)' if include_adversarial_v2_cases else 'OMITTED (manifest and data card bundled; cases unbundled for lightweight release)'}"
     )
     print("=" * 70)
 
@@ -159,13 +159,13 @@ def create_evaluation_package(
     for p in (project_root / "data" / "adversarial-v1").glob("*.*"):
         files_to_bundle.append((p, f"data/adversarial-v1/{p.name}"))
 
-    # Sealed 30-case Adversarial Benchmark v2 (adversarial-v2)
-    # Always include documentation and manifest; cases.jsonl ONLY if --include-sealed
+    # Publicly Disclosed 30-case Adversarial Benchmark v2 (adversarial-v2)
+    # Always include documentation and manifest; cases.jsonl ONLY if requested
     adv_v2_dir = project_root / "data" / "adversarial-v2"
     if adv_v2_dir.exists():
         files_to_bundle.append((adv_v2_dir / "data-card.md", "data/adversarial-v2/data-card.md"))
         files_to_bundle.append((adv_v2_dir / "manifest.json", "data/adversarial-v2/manifest.json"))
-        if include_sealed:
+        if include_adversarial_v2_cases:
             files_to_bundle.append((adv_v2_dir / "cases.jsonl", "data/adversarial-v2/cases.jsonl"))
 
     # 2. Prompts
@@ -266,12 +266,18 @@ def create_evaluation_package(
         "created_at_utc": datetime.now(UTC).isoformat(),
         "project_version": "0.1.0",
         "git_provenance": git_prov,
-        "runtime_environment": {
+        "packaging_environment": {
             "os_platform": platform.platform(),
             "python_version": sys.version.split()[0],
             "sqlite_version": sqlite3.sqlite_version,
             "python_lockfile_sha256": _compute_sha256(uv_lock) if uv_lock.exists() else None,
             "frontend_lockfile_sha256": _compute_sha256(pkg_lock) if pkg_lock.exists() else None,
+        },
+        "evaluation_environment": {
+            "os_platform": "Windows 11 x86_64",
+            "python_version": "3.12.15",
+            "sqlite_version": "3.53.1",
+            "execution_scope": "Local loopback (127.0.0.1) only",
         },
         "dataset_disclosure_policy": {
             "public_datasets": [
@@ -281,12 +287,12 @@ def create_evaluation_package(
             ],
             "disclosed_challenge_dataset": "data/adversarial-v2 (30 cases)",
             "future_sealed_benchmark": "adversarial-v3 (unreleased external challenge suite)",
-            "cases_included_in_bundle": include_sealed,
+            "cases_included_in_bundle": include_adversarial_v2_cases,
             "status_note": (
                 "adversarial-v2 was reclassified from sealed to publicly disclosed following repository exposure. "
                 "Its cases.jsonl is un-tracked from git and omitted by default from minimal evaluation bundles to keep distribution lightweight. "
                 "Future held-out evaluations will be conducted on an independently held adversarial-v3 benchmark suite."
-                if not include_sealed
+                if not include_adversarial_v2_cases
                 else "adversarial-v2 cases.jsonl was explicitly included in this bundle."
             ),
         },
@@ -335,10 +341,12 @@ if __name__ == "__main__":
         help="Output ZIP path",
     )
     parser.add_argument(
-        "--include-sealed",
+        "--include-adversarial-v2-cases",
         action="store_true",
         default=False,
-        help="Include sealed challenge benchmark cases (data/adversarial-v2/cases.jsonl). Default: False.",
+        help="Include adversarial-v2 challenge cases (data/adversarial-v2/cases.jsonl). Default: False.",
     )
     args = parser.parse_args()
-    create_evaluation_package(args.output, include_sealed=args.include_sealed)
+    create_evaluation_package(
+        args.output, include_adversarial_v2_cases=args.include_adversarial_v2_cases
+    )

@@ -15,7 +15,7 @@ Small open-weight language models (3B–4B parameters) running locally on commod
 
 We introduce **LocaleGate**, a deterministic verification and fail-closed execution gate designed to safely mediate tool-calling proposals from untrusted local small models. Rather than relying on recursive chain-of-thought prompting or fine-tuning, LocaleGate decouples probabilistic entity extraction from authoritative parsing, temporal role binding, and state commitment. Models are required to emit verbatim character-slice evidence quotes alongside proposals. Deterministic validators verify substring presence, validate grammatical and numeric grouping rules (e.g. Croatian comma decimals vs. US period decimals), apply closest-governing-cue role resolution, and enforce capability-token-based confirmation with replay protection. 
 
-Across 60 live adversarial evaluation cases on adversarial-v1, a 600-case deterministic parser oracle diagnostic on benchmark-v1, and 30 adversarial-v2 challenge scenarios, LocaleGate eliminates 100% of observed unsafe model proposals while preserving full cross-model reproducibility and 1.2 ms p50 / 2.1 ms p95 gate validation latency.
+Across 60 live model evaluation cases on adversarial-v1 (evaluating Qwen3.5-4B and Gemma-4-E2B-It), LocaleGate deterministically intercepted 100% of observed unsafe model proposals (4/4 Qwen, 9/9 Gemma), with 0/60 unsafe proposals reaching confirmation capability. A 600-case deterministic parser oracle diagnostic on benchmark-v1 confirmed 100% parser coverage independently of extraction noise, and a separately disclosed 30-case adversarial-v2 challenge suite validated complex DST and script-injection boundaries, all while maintaining 1.2 ms p50 / 2.1 ms p95 gate validation latency.
 
 ---
 
