@@ -1,18 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "package_name": "localegate_research_validation_1.0_evaluation_package",
-  "created_at_utc": "2026-11-04T19:14:13.122599+00:00",
+  "created_at_utc": "2026-11-04T19:30:29.072972+00:00",
   "project_version": "0.1.0",
   "git_provenance": {
-    "git_commit_sha": "0f74166a934442eeecf7779bc513b190f8425da7",
+    "git_commit_sha": "645e181569367ff890abf3f8ff9f2ccdbae646c1",
     "git_working_tree_clean": true
   },
-  "runtime_environment": {
+  "packaging_environment": {
     "os_platform": "Windows-10-10.0.26300-SP0",
     "python_version": "3.11.9",
     "sqlite_version": "3.45.1",
     "python_lockfile_sha256": "612055600c4d0ebbb25a563cdf3bea85b02510e85a945e64632edfb7e56b3263",
     "frontend_lockfile_sha256": "50a3e193d393a286f3cfd04c90fe4405c8d8bab8fdc497705d71c803780af211"
+  },
+  "evaluation_environment": {
+    "os_platform": "Windows 11 x86_64",
+    "python_version": "3.12.15",
+    "sqlite_version": "3.53.1",
+    "execution_scope": "Local loopback (127.0.0.1) only"
   },
   "dataset_disclosure_policy": {
     "public_datasets": [
@@ -25,7 +31,7 @@
     "cases_included_in_bundle": false,
     "status_note": "adversarial-v2 was reclassified from sealed to publicly disclosed following repository exposure. Its cases.jsonl is un-tracked from git and omitted by default from minimal evaluation bundles to keep distribution lightweight. Future held-out evaluations will be conducted on an independently held adversarial-v3 benchmark suite."
   },
-  "files_count": 196,
+  "files_count": 195,
   "files": [
     {
       "path": "CONTRIBUTING.md",
@@ -698,11 +704,6 @@
       "sha256": "3c06a25fc812e09e9a0df43a670ea07b60ebf87a7692c15a908db88780786815"
     },
     {
-      "path": "docs/research-validation-plan.md",
-      "size_bytes": 5194,
-      "sha256": "52ed6a9ca4b5279e9ad9bb6f04a877b76b35f1d4a60787d332acfa27c0a6a7ba"
-    },
-    {
       "path": "docs/threat-model.md",
       "size_bytes": 4545,
       "sha256": "0b9ee8f275134cfc4bd4add3af7f76add8d9df3cc6d7dd16cd2604976ab973db"
@@ -719,8 +720,8 @@
     },
     {
       "path": "scripts/package_evaluation_release.py",
-      "size_bytes": 14267,
-      "sha256": "b40c01955e91e48487836bab5ac0f444cecac46e8caa4cf5cb52a677ea6a2c97"
+      "size_bytes": 14618,
+      "sha256": "72be602046df4fdce44c74ff0704330fb82221a7d01c379effa115e861da0864"
     },
     {
       "path": "scripts/run_repeated_concurrency_stress.py",
