@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "package_name": "localegate_research_validation_1.0_evaluation_package",
-  "created_at_utc": "2026-11-04T18:21:14.139397+00:00",
+  "created_at_utc": "2026-11-04T18:31:37.318968+00:00",
   "project_version": "0.1.0",
   "git_provenance": {
-    "git_commit_sha": "215d06fa3ecece75f8fec1c61048599cc8606f3b",
+    "git_commit_sha": "a3f0d47595f92f5d2f328b6488d9df79855140e2",
     "git_working_tree_clean": false
   },
   "runtime_environment": {
@@ -712,8 +712,8 @@
     },
     {
       "path": "pyproject.toml",
-      "size_bytes": 2207,
-      "sha256": "7bc5e819d0a61b0b33b9710a36544e4e261eb11345d7cfced97737bf1928c8ae"
+      "size_bytes": 2235,
+      "sha256": "5ae109a83a27404f6169b3906bff995b3704183670354520d901995d163a35c4"
     },
     {
       "path": "scripts/package_evaluation_release.py",
