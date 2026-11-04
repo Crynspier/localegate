@@ -1,27 +1,29 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "package_name": "localegate_research_validation_1.0_evaluation_package",
-  "created_at_utc": "2026-11-04T18:46:17.458471+00:00",
+  "created_at_utc": "2026-11-04T19:14:13.122599+00:00",
   "project_version": "0.1.0",
   "git_provenance": {
-    "git_commit_sha": "5db31bbfc57ec8d1650eb339de11e07e393b2dc4",
-    "git_working_tree_clean": false
+    "git_commit_sha": "0f74166a934442eeecf7779bc513b190f8425da7",
+    "git_working_tree_clean": true
   },
   "runtime_environment": {
-    "os_platform": "Windows-11-10.0.26300-SP0",
-    "python_version": "3.12.15",
-    "sqlite_version": "3.53.1",
-    "python_lockfile_sha256": "9778ab19c3e0777ce53c262c69d2f8acabee3d875599ca9bf6a5fa6ae8e01aa5",
+    "os_platform": "Windows-10-10.0.26300-SP0",
+    "python_version": "3.11.9",
+    "sqlite_version": "3.45.1",
+    "python_lockfile_sha256": "612055600c4d0ebbb25a563cdf3bea85b02510e85a945e64632edfb7e56b3263",
     "frontend_lockfile_sha256": "50a3e193d393a286f3cfd04c90fe4405c8d8bab8fdc497705d71c803780af211"
   },
   "dataset_disclosure_policy": {
     "public_datasets": [
       "data/benchmark-v1 (600 cases)",
-      "data/adversarial-v1 (60 cases)"
+      "data/adversarial-v1 (60 cases)",
+      "data/adversarial-v2 (30 cases, publicly disclosed challenge dataset)"
     ],
-    "sealed_challenge_dataset": "data/adversarial-v2 (30 cases)",
-    "sealed_dataset_cases_included": false,
-    "status_note": "Full sealed benchmark cases are omitted by default to prevent evaluation data leakage into subsequent model training or prompt iteration. Only documentation and verification manifests are included."
+    "disclosed_challenge_dataset": "data/adversarial-v2 (30 cases)",
+    "future_sealed_benchmark": "adversarial-v3 (unreleased external challenge suite)",
+    "cases_included_in_bundle": false,
+    "status_note": "adversarial-v2 was reclassified from sealed to publicly disclosed following repository exposure. Its cases.jsonl is un-tracked from git and omitted by default from minimal evaluation bundles to keep distribution lightweight. Future held-out evaluations will be conducted on an independently held adversarial-v3 benchmark suite."
   },
   "files_count": 196,
   "files": [
@@ -37,8 +39,8 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 29063,
-      "sha256": "610efd1f114e16d712e7f315b9d3501343b8c9a0127d5eb85f41a185ea86b54a"
+      "size_bytes": 29895,
+      "sha256": "8ac3cccdb68c266f9fe24c6cd72b9054f09ddd0117bb569c744661f04e0a7330"
     },
     {
       "path": "SECURITY.md",
@@ -627,13 +629,13 @@
     },
     {
       "path": "data/adversarial-v2/data-card.md",
-      "size_bytes": 2479,
-      "sha256": "1d477e5efa4d961ba69d71a37e852763c82b8950c6b9d5ebfb882603dcab5d0b"
+      "size_bytes": 3367,
+      "sha256": "d6c87d01a78647c0806831f0ec1b5a18791a0f0ca3109a1b237ed86c33ee3130"
     },
     {
       "path": "data/adversarial-v2/manifest.json",
       "size_bytes": 622,
-      "sha256": "82caf7eac775d9d20f1ac8692fbc60332acffe7485eb8ce74d9f970642d1c5d2"
+      "sha256": "c5dcf7f81809f22ffe22be7b0b20af101ea9423fd369d75dd765b291251e27ac"
     },
     {
       "path": "data/benchmark-v1/cases.jsonl",
@@ -693,7 +695,7 @@
     {
       "path": "docs/reproducibility.md",
       "size_bytes": 4479,
-      "sha256": "c582c88535ac84b9982f5e04b0f46575e691150961680157811b8b13ff8e60b8"
+      "sha256": "3c06a25fc812e09e9a0df43a670ea07b60ebf87a7692c15a908db88780786815"
     },
     {
       "path": "docs/research-validation-plan.md",
@@ -712,13 +714,13 @@
     },
     {
       "path": "pyproject.toml",
-      "size_bytes": 2255,
-      "sha256": "29337172e585ced9147f93286140ec86cfd54ea9f26655d2e6dafb343021fa7a"
+      "size_bytes": 2415,
+      "sha256": "c9175d1f0c7716c7244162685b77184f5110988e63ec6f153af24e2ccffbe861"
     },
     {
       "path": "scripts/package_evaluation_release.py",
-      "size_bytes": 13868,
-      "sha256": "bc2b4e6d287e93ae3c3c0080b5a680cdcf523d9bfdb0a5b549ab12759ea6415d"
+      "size_bytes": 14267,
+      "sha256": "b40c01955e91e48487836bab5ac0f444cecac46e8caa4cf5cb52a677ea6a2c97"
     },
     {
       "path": "scripts/run_repeated_concurrency_stress.py",
@@ -887,8 +889,8 @@
     },
     {
       "path": "src/locale_gate/models/adapter.py",
-      "size_bytes": 26541,
-      "sha256": "fd4c64b252bbb3f43011c8a9acde9a574b81c21445a4dfefc434bf9b044f6884"
+      "size_bytes": 26551,
+      "sha256": "d87c0c3a65e01d77eb387a5980daca4a9d1938ada009f7ccb7713fdb4c73997e"
     },
     {
       "path": "src/locale_gate/models/gguf_inspector.py",
@@ -942,8 +944,8 @@
     },
     {
       "path": "tests/integration/test_api_and_adapter.py",
-      "size_bytes": 12756,
-      "sha256": "8af7e324a66a33f9323b9351f25eb53dcaff96d9720a04ce36aa7a24e2f28ef0"
+      "size_bytes": 12766,
+      "sha256": "7fbd53a0250f87c4341188ee0eda5c1fedb566f4a273eab5bf6c122c54d665e2"
     },
     {
       "path": "tests/property/test_properties.py",
@@ -997,8 +999,8 @@
     },
     {
       "path": "uv.lock",
-      "size_bytes": 200369,
-      "sha256": "9778ab19c3e0777ce53c262c69d2f8acabee3d875599ca9bf6a5fa6ae8e01aa5"
+      "size_bytes": 198567,
+      "sha256": "612055600c4d0ebbb25a563cdf3bea85b02510e85a945e64632edfb7e56b3263"
     },
     {
       "path": "web/package-lock.json",
