@@ -99,7 +99,7 @@ We benchmarked two small local open-weight models executed strictly via CPU infe
 1. **Live Model Adversarial Evaluation (`adversarial-v1`, 60 Cases):**
    * Evaluated against live local CPU execution of Qwen3.5-4B and Gemma-4-E2B-It.
    * In raw model execution without LocaleGate, Qwen committed **4 unsafe proposals** and Gemma committed **9 unsafe proposals** across 9 unique adversarial scenarios (`ADV-HR-0009`, `ADV-HR-0010`, `ADV-HR-0012`, `ADV-HR-0022`, `ADV-HR-0027`, `ADV-HR-0028`, `ADV-HR-0029`, `ADV-US-0005`, and `ADV-GB-0015`).
-   * When mediated by LocaleGate, **100% of these 13 failure instances were deterministically intercepted** (blocked or constrained to human confirmation), with 0/60 unsafe proposals reaching confirmation capability.
+   * When mediated by LocaleGate, **100% of these 13 failure instances were deterministically intercepted** (blocked or constrained to human confirmation), with 0/13 unsafe proposals reaching confirmation capability and zero unauthorized committed mutations.
 2. **Deterministic Parser Oracle Diagnostic (`benchmark-v1`, 600 Cases):**
    * A deterministic oracle diagnostic achieves 600/600 (100.0%) concordance on `benchmark-v1`, establishing the deterministic upper-bound parsing capability of the rule engine independently of model extraction noise.
 3. **Advanced Challenge Benchmark (`adversarial-v2`, 30 Cases):**
@@ -128,7 +128,7 @@ To facilitate external reproduction without environment contamination:
 1. **Disclosed Challenge Suite & Future Held-Out Benchmark:** `data/adversarial-v2` (30 cases) is formally reclassified as a publicly disclosed evaluation suite. Its `cases.jsonl` is excluded from git tracking and default minimal packages to avoid downstream training contamination. Future sealed benchmark evaluations will use an independently authored, unreleased `adversarial-v3` challenge suite.
 2. **Release Package Hygiene:** Pre-packaging audits verify zero credentials, zero local Windows paths (`C:\\Users`), zero SQLite databases, and zero `.gguf` binary weights.
 3. **Independent Clean-Environment Verification:** A dedicated verification script ([scripts/verify_clean_release_archive.py](scripts/verify_clean_release_archive.py)) was executed in an isolated temporary directory, confirming that:
-   * All 196 bundled files match cryptographic SHA-256 hashes in `archive_manifest.json`.
+   * All bundled files match cryptographic SHA-256 hashes in `archive_manifest.json`.
    * Public datasets validate with zero leakage.
    * All 13 frozen regression fixtures pass offline.
    * All deterministic unit tests pass cleanly outside the dev environment.
@@ -144,4 +144,4 @@ To facilitate external reproduction without environment contamination:
 
 ## 8. Conclusion
 
-LocaleGate demonstrates that small language models can be safely utilized in autonomous agent workflows when paired with a deterministic, evidence-grounded verification boundary. By enforcing verbatim evidence verification, regional grammar rules, and atomic capability tokens, LocaleGate eliminated unsafe state mutations across all evaluated benchmark populations while maintaining 1.2 ms p50 and 2.1 ms p95 gate validation latency.
+LocaleGate demonstrates that small language models can be safely utilized in autonomous agent workflows when paired with a deterministic, evidence-grounded verification boundary. In live adversarial model evaluations (120 model-case runs), LocaleGate intercepted 100% of observed unsafe model proposals (13/13), preventing any unauthorized state mutations or unconfirmed actions from reaching execution while maintaining 1.2 ms p50 and 2.1 ms p95 gate validation latency.
